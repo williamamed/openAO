@@ -1,9 +1,0 @@
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 109 ---> array (
-  0 => 'hola',
-)
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 101 ---> 'Paso por aqui'
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 101 ---> 'Paso por aqui'
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 112 ---> 'jjsjsjs'
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 101 ---> 'Paso por aqui'
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 101 ---> 'Paso por aqui'
-Debug --> Called in Class --> AtencionOnline\NotificacionBundle\Manager\Correo line: 101 ---> 'Paso por aqui'

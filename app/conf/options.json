@@ -16,7 +16,7 @@
             "es",
             "en"
         ],
-        "name": "Raptor3"
+        "name": "OpenAO"
     },
     "syntarsus": {
         "auth": "native",

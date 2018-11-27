@@ -31,7 +31,7 @@ class UiComercialBundle extends Bundle{
         \Util\RUXBundle\RUXBundle::protectRoute('/ao/[\/\w]*');
         
         \Util\RUXBundle\RUXBundle::setName('ao');
-        \Util\RUXBundle\RUXBundle::addViewPlugin('rux_icon', '../../bundles/AtencionOnline/UiComercial/identity/title.png', '/ao/home');
+        \Util\RUXBundle\RUXBundle::addViewPlugin('rux_icon', 'AtencionOnline/UiComercial/identity/title.png', '/ao/home');
 
         \Util\RUXBundle\RUXBundle::addViewPlugin('rux_name', "Bienvenido", '/ao/home');
         \Util\RUXBundle\RUXBundle::addViewPlugin('rux_sidebar_iconbase', "AtencionOnline/UiComercial/menu/", '/ao/home');

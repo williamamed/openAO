@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <link rel="icon" href="{%if plugin('rux_icon')%}{{ plugin('rux_icon') }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}">
+        <link rel="icon" href="{%if plugin('rux_icon')%}{{ asset(plugin('rux_icon')) }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}">
 
         <title>{%if plugin('rux_name')%}{{ plugin('rux_name') }}{%else%}{{ appname }} {{ version }}{%endif%}</title>
 
@@ -96,7 +96,7 @@
                 md-whiteframe="4">
 
                 <md-toolbar class="md-theme-indigo">
-                    <p class="text-center" ><img src="{%if plugin('rux_icon')%}{{ plugin('rux_icon') }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}" height="90"></p>
+                    <p class="text-center" ><img src="{%if plugin('rux_icon')%}{{ asset(plugin('rux_icon')) }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}" height="90"></p>
 
                 </md-toolbar>
                 <md-content layout-padding >
