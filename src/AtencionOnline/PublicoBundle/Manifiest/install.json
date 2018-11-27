@@ -1,0 +1,13 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "PublicoBundle",
+    "description": "Componente para la creacion de formularios publicos de incidencias",
+    "namespace": "AtencionOnline.PublicoBundle.PublicoBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1",
+        "Logica": ">=@1.0.0"
+    },
+    "installScript": "Installer\/Install.php",
+    "installed": 1
+}

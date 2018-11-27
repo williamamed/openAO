@@ -1,0 +1,12 @@
+{
+    "author": "Proyecto Raptor 2018",
+    "name": "SyntarsusBundle",
+    "description": "El modulo de seguridad (Syntarsus) implementa un modelo estructurado RBAC  permitiendo ajustar tu sistema a ambientes organizacionales complejos representandolos en una estructura de arbol.",
+    "namespace": "Raptor2.SyntarsusBundle.SyntarsusBundle",
+    "version": "3.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Installer\/Install.php",
+    "installed": 0
+}

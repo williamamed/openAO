@@ -1,0 +1,12 @@
+{
+    "author": "Raptor Team",
+    "name": "RUXBundle",
+    "description": "El entorno RUX sirve como plantilla predefinida para lograr una l\u00f3gica de integraci\u00f3n entre las funciones que usted desarrolla.",
+    "namespace": "Util.RUXBundle.RUXBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Installer\/Install.php",
+    "installed": 1
+}

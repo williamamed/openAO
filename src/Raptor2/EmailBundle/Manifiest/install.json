@@ -1,0 +1,11 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "EmailBundle",
+    "description": "This is the handler component to send emails",
+    "namespace": "Raptor2.EmailBundle.EmailBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installed": 1
+}

@@ -1,0 +1,10 @@
+{
+    "author": "Autor del componente",
+    "name": "EscritorioBundle",
+    "description": "...",
+    "namespace": "AtencionOnline.EscritorioBundle.EscritorioBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}

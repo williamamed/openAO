@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset("AtencionOnline/Escritorio/login/title.png") }}"> 
+
+    <title>Homenaje a Fidel</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
+
+   <style>
+            body {
+                padding-top: 50px;
+                background: url({{ asset("AtencionOnline/Escritorio/portal/desktop/images/atencion.png") }});
+                background-attachment: fixed;
+                background-size: cover;
+              }
+              .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+              }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ asset("bootstrap/js/ie-emulation-modes-warning.js") }}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+
+    <div class="container" style="padding: 40px;background: white;">
+          <div class="cuadros"></div>
+          <br>
+          <h1 class="text-center"><img src="{{ asset('AtencionOnline/Publico/comandante.png') }}" width="90"></h1>
+         <h2 class="featurette-heading" style="text-align: center"><span class="text-info" >Homenaje a Fidel</span></h2>
+         <p class="lead text-center" style="color: #7a7a7a">Joven Club te ofrece la oportunidad de enviar mensajes, prosa o poesía y dibujos recordando al líder indiscutible de la Revolución cubana</p><br>
+        
+        {% if flash['config_succ'] %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>{{ flash['config_succ'] }}</strong> {{ flash['config_succ_detail'] }}
+        </div>
+        {% endif %}
+         
+
+         <hr>
+         <div class="container" style="background: transparent !important;">
+          <form id="formid" class="form-horizontal" method="POST" action="{{ path('_fidel_mensaje') }}" enctype="multipart/form-data">
+             <div class="row">
+             
+               <div class="col-md-4">
+                  <input name="nombreApellidos" class="form-control" type="text" id="nombreApellidos" placeholder="Escriba su nombre..">
+               </div>    
+               
+            </div>  
+                
+            <div class="row">      
+             <div class="col-md-8" style="margin-top:10px">
+                  <textarea name="mensaje" class="form-control" placeholder="Mensaje, prosa o poesía y dibujos recordando al líder indiscutible de la Revolución cubana..." style="height: 200px;"></textarea>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                <label class="control-label" for="mybundle">Enviar un dibujo o imagen</label>
+                    <div class="controls">
+                        <input id="file-field" class="form-control" type="file" name="image" style="display: none">
+                    </div>
+                 <div class="input-group">
+                     <input type="text" id="show-field" class="form-control" disabled>
+                    <span class="input-group-btn">
+                        <button id="myfield" class="btn btn-default" type="button">Buscar</button>
+                    </span>
+                  </div>
+                </div> 
+
+             </div>
+             <hr>
+              
+                 
+                     <input name="token" type="hidden" value="{{ token }}">
+             
+               
+                  <div class="control-group span12" style="margin-top: 25px">
+                  <div class="controls">
+                      <button type="submit" id="btn-config" class="btn btn-primary "><i class="icon-raptor-acept icon-white" style="margin-right: 5px"></i>Enviar</button>
+                  </div>
+              </div>
+              
+          </form>
+        
+        <br><br>
+        <p class="lead">
+            
+           
+        </p>
+        
+      </div>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bootstrap/js/all.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ asset("bootstrap/js/ie10-viewport-bug-workaround.js") }}"></script>
+    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir.js') }}"></script>
+    <script src="{{ asset('AtencionOnline/Publico/form.validation.js') }}"></script>
+    <script src="{{ asset('AtencionOnline/Publico/fidel.js') }}"></script>
+    <script type="text/javascript">
+        $(document.body).ready(function() {
+
+            $('#myfield').click(function(){
+                $('#file-field').trigger('click');
+            })
+            $('#file-field').change(function(){
+                $('#show-field').val($('#file-field').val());
+            });
+            
+        });
+       
+</script>
+  </body>
+</html>

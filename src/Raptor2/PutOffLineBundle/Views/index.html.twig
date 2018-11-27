@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Nuestro sitio se lanzará pronto</title>
+	<link rel="stylesheet" href="{{ asset('Raptor2/PutOffLine/css/style.css') }}" type="text/css" charset="utf-8" />
+	<!--<link rel="stylesheet" href="ie.css" type="text/css" charset="utf-8" />-->
+	<script language="Javascript" type="text/javascript" src="{{ asset('Raptor2/PutOffLine/js/jquery-1.4.4.js') }}"></script>
+	<script language="Javascript" type="text/javascript" src="{{ asset('Raptor2/PutOffLine/js/jquery.lwtCountdown-1.0.js') }}"></script>
+	<script language="Javascript" type="text/javascript" src="{{ asset('Raptor2/PutOffLine/js/misc.js') }}"></script>
+        <link rel="shortcut icon" href="{{ asset('Raptor2/PutOffLine/images/code-icon.png') }}">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="logo">
+		</div> <!-- end of logo -->
+		<div id="main">
+                        
+			<div id="countdown">
+				
+					<div class="dash weeks_dash">
+						<span class="dash_title">semanas</span>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+
+					<div class="dash days_dash">
+						<span class="dash_title">días</span>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+
+					<div class="dash hours_dash">
+						<span class="dash_title">horas</span>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+
+					<div class="dash minutes_dash">
+						<span class="dash_title">minutos</span>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+
+					<div class="dash seconds_dash">
+						<span class="dash_title">segundos</span>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
+					</div>
+
+				
+					
+			</div> <!-- end of countdown -->
+			
+			<div id="bottom">
+				<div class="bottom-text">
+				   Copyright 2016
+				</div>
+				 <!-- end of newsletter zone -->
+				
+							
+			</div> <!-- end of bottom div -->
+			
+
+			
+	
+		</div> <!-- end of main -->
+		<!-- start of the javascript code that handles the countdown -->
+		<script language="javascript" type="text/javascript">
+			jQuery(document).ready(function() {
+				$('#countdown').countDown({
+					targetDate: {
+						'day': 		'{{ day }}',
+						'month': 	'{{ month }}',
+						'year': 	'{{ year }}',
+						'hour': 	'{{ hour }}',
+						'min': 		'{{ minute }}',
+						'sec': 		0
+					},
+                                        onComplete:function(){
+                                                
+                                        }
+				});
+							
+				$('#email_field').focus(email_focus).blur(email_blur);
+				$('#subscribe_form').bind('submit', function() { return false; });
+				
+			});
+		</script>
+		<!-- end of the javascript code that handles the countdown -->
+		
+	</div> <!-- end of wrapper -->
+	
+</body>
+</html>

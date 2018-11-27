@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset("AtencionOnline/Publico/img/title.png") }}"> 
+
+    <title>Formulario de incidencias</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap/v4/css/bootstrap.min.css") }}" rel="stylesheet">
+    <script src="{{ asset('angular/angular.min.js') }}"></script>
+   <style>
+            body {
+                padding-top: 20px;
+              }
+              .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+              }
+    </style>
+
+  </head>
+
+  <body ng-app="myApp">
+
+
+    <div class="container" style="padding: 10px;background: white;">
+          <div class="cuadros"></div>
+          <br>
+          <h1 class="text-center"><img src="{{ asset('AtencionOnline/Publico/img/logo.png') }}" width="110"></h1>
+         <h2 class="featurette-heading" style="text-align: center"><span class="text-info" >Formulario de incidencias</span></h2>
+         <p class="lead text-center" style="color: #7a7a7a">En este espacio usted puede expresar inquietudes, insatisfacciones, sugerencias, denuncias, comentarios y otras incidencias que desee compartir con nosotros. Sus datos no serán públicos. Debe llenar el formulario que a continuación se le muestra para poder tramitar y darle respuesta a su inquietud. <br>La incidencia será enviada hacia {{ estructura }}</p><br>
+         
+         
+         <p class="text-center" style="color: #7a7a7a"><a><span class="badge badge-danger">Nuevo</span></a> Ahora puede ver si su reclamación, duda o sugerencia ha sido atendida y la respuesta de la misma, entre el código de la incidencia para verificar su estado.<br>
+         
+         </p>
+         
+         <div class="container-fluid">
+            <form action="{{path('_estado')}}" method="GET">
+                <div class="col-md-4 offset-4">
+                    <div class="input-group">
+                      <input type="text" name="code" class="form-control" placeholder="Código de la incidencia" aria-label="Código de la incidencia">
+                      <span class="input-group-append">
+                        <button class="btn btn-success" type="submit">ver incidencia</button>
+                      </span>
+                    </div>
+                </div>
+             </form>
+         </div>
+         
+
+         <hr>
+         <div class="featurette" style="background: transparent !important;" ng-controller="userController">
+          <form name="userForm" class="form-horizontal" ng-submit="submitForm(userForm.$valid)" novalidate method="POST" action="{{ path('_formulario_registro') }}">
+            <div class="row">
+              <div class="col-md-4">    
+                 <label class="control-label" for="nombreApellidos">Nombre y apellidos</label>
+                 <input ng-minlength="3" ng-class="{ 'is-invalid' : userForm.nombreApellidos.$invalid && !userForm.nombreApellidos.$pristine }" ng-model='inc.nombreApellidos' name="nombreApellidos" class="form-control" type="text" id="nombreApellidos" placeholder="Escriba su nombre..">
+                 
+              </div>    
+            </div>      
+            <div class="row">
+              <div class="col-md-4">
+                  <label class="control-label"  for="entidadPertenece">Organismo o entidad a la que perteneces</label>
+                  <input ng-minlength="3" ng-class="{ 'is-invalid' : userForm.entidadPertenece.$invalid && !userForm.entidadPertenece.$pristine }" ng-model='inc.entidadPertenece' name="entidadPertenece" class="form-control" type="text" id="entidadPertenece" placeholder="Ej. Educación" >
+                  
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-3">
+                  <label class="control-label" for="edad">Edad</label>
+                  <input ng-minlength="1" ng-class="{ 'is-invalid' : userForm.edad.$invalid && !userForm.edad.$pristine }" ng-model='inc.edad' name="edad" class="form-control" type="text" id="edad" placeholder="Ej. 15" >
+                  
+              </div>     
+            </div>      
+            <div class="row">
+              <div class="col-md-4">
+                  <label class="control-label" for="tel">Teléfono</label>
+                  <input ng-minlength="3" ng-class="{ 'is-invalid' : userForm.telefono.$invalid && !userForm.telefono.$pristine }" ng-model='inc.telefono' name="telefono" class="form-control" type="text" id="tel" placeholder="Ej. 5303632536" >
+                  
+              </div>     
+            </div> 
+            <div class="row">
+              <div class="col-md-3">
+                  <label class="control-label" for="sexo">Sexo</label>
+                  <select ng-model='inc.sexo' ng-options="x.id as x.name for x in sexoItems"  class="form-control" name="sexo" id="sexo" >
+                        <option value="" disabled selected style="color: #999;">Seleccione el sexo ...</option>
+                   </select>
+              </div>         
+            </div> 
+                  
+            <div class="row">
+              <div class="col-md-4">
+                   <label class="control-label" for="nivelEscolar">Nivel escolar</label>
+                   <select ng-model='inc.nivel' ng-options="x.id as x.name for x in nivelItems" class="form-control" name="nivelEscolar" id="nivel">
+                            <option value="" disabled selected style="color: #999;">Seleccione su nivel escolar ...</option>
+                            
+                    </select>
+               </div>
+            </div>
+                  
+            <div class="row">
+              <div class="col-md-4">
+                  <label class="control-label" for="ocupacion">Ocupación</label>
+                  <select ng-model='inc.ocupacion' ng-options="x.id as x.name for x in ocupacionItems" class="form-control" name="ocupacion" id="ocupacion">
+                            <option value="" disabled selected style="color: #999;">Seleccione su ocupación ...</option>
+                            
+                   </select>
+                </div>
+            </div> 
+                  
+           <div class="row">
+                <div class="col-md-5">
+                  <label class="control-label" for="inputDB">Dirección particular</label>
+                  <textarea ng-minlength="5" ng-class="{ 'is-invalid' : userForm.direccion.$invalid && !userForm.direccion.$pristine }" ng-model='inc.direccion' name="direccion" class="form-control" placeholder="Escriba su dirección" style="width: 100%;height: 200px;"></textarea>
+                </div>
+            </div>
+                
+             <hr>
+              
+                  
+            <div class="row">
+                <div class="col-md-4">
+                  <label class="control-label"  for="dirigido">Contra quién va dirigida</label>
+                  <input ng-minlength="3" ng-class="{ 'is-invalid' : userForm.dirigido.$invalid && !userForm.dirigido.$pristine }" ng-model='inc.dirigido' name="dirigido" class="form-control" type="text" id="dirigido" placeholder="Ej. Manuel Garcia" required>
+                </div>
+            </div>
+                
+              
+            <div class="row">
+                <div class="col-md-5">
+                  <label class="control-label" for="inputDB">Síntesis del planteamiento</label>
+                  <textarea ng-minlength="5" ng-class="{ 'is-invalid' : userForm.planteamiento.$invalid && !userForm.planteamiento.$pristine }" ng-model='inc.planteamiento' name="planteamiento" class="form-control" style="width: 100%;height: 200px;" required></textarea>
+                </div>
+            </div>
+             
+                     <input name="eid" type="hidden" value="{{ idestructura }}">
+                     <input name="token" type="hidden" value="{{ token }}">
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                  <button ng-disabled="userForm.$invalid" type="submit" class="btn btn-primary "><i class="icon-raptor-acept icon-white" style="margin-right: 5px"></i>Enviar</button>
+                </div>
+            </div>
+            
+        
+              
+          </form>
+        </div>
+        
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bootstrap/js/jquery.js') }}"></script>
+    <script src="{{ asset('bootstrap/v4/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir-all.js') }}"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        
+        app.controller("userController", function ($scope, $http, $location) {
+            //$scope.msg = "I love London";
+            
+            $scope.sexoItems=[{
+                id:1,name:"Femenino"
+            },{
+                id:0,name:"Masculino"
+            }]
+            
+            $scope.nivelItems=[{
+                id:0,name:"Primaria"
+            },{
+                id:1,name:"Secundaria"
+            },{
+                id:2,name:"Pre-Universitario"
+            },{
+                id:3,name:"Técnico medio"
+            },{
+                id:4,name:"Obrero calificado"
+            },{
+                id:5,name:"Universitario"
+            },{
+                id:6,name:"No tiene"
+            }]
+            
+            $scope.ocupacionItems=[{
+                id:0,name:"No tiene"
+            },{
+                id:1,name:"Estudiante"
+            },{
+                id:2,name:"Servicio"
+            },{
+                id:3,name:"Técnico"
+            },{
+                id:4,name:"Dirigente"
+            }]
+            
+            $('[data-toggle="tooltip"]').tooltip();
+            
+            $scope.submitForm = function (isValid) {
+                console.log($scope.inc)
+                // check to make sure the form is completely valid
+                if (isValid) {
+
+                    //UIR.load.show('Configuring Raptor....')
+                    userForm.submit()
+                    
+                }else{
+                    alert('invalid')
+                }
+
+            };
+
+        });
+
+
+
+    </script>
+  </body>
+</html>

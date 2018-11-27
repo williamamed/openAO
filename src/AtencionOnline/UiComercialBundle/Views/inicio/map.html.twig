@@ -1,0 +1,137 @@
+
+  <div>
+    <link rel="stylesheet" href="http://localhost/geo/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script src="http://localhost/geo/ol.js" type="text/javascript"></script>
+    
+    <h2>Localización de incidencias</h2>
+
+    <div id="map" class="map"><div id="popup"></div></div>
+
+</div>
+
+</div>
+    <script type="text/javascript">
+	var 
+    vectorSource = new ol.source.Vector(),
+    vectorLayer = new ol.layer.Vector({
+      source: vectorSource
+    });
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM({
+				//url: 'http://localhost/geo/serve.php?z={z}&x={x}&y={y}'
+				url: 'http://localhost/geo/tiles/{z}/{x}/{y}.png'
+			})
+          }),
+		  vectorLayer
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-80.222375128183387, 21.692759782113573]),
+          zoom: 7,
+		  maxZoom: 14
+        })
+      });
+	  
+	  var iconStyle = new ol.style.Style({
+			image: new ol.style.Icon({
+				anchor: [0.5, 43],
+				anchorXUnits: 'fraction',
+				anchorYUnits: 'pixels',
+				opacity: 0.75,
+				src: 'http://localhost/geo/marker.png'
+			}),
+			text: new ol.style.Text({
+				font: '12px Calibri,sans-serif',
+				fill: new ol.style.Fill({ color: '#000' }),
+				stroke: new ol.style.Stroke({
+					color: '#fff', width: 2
+				}),
+				//text: 'Some text'
+			})
+		});
+    
+    var samples=[
+            [-8567472.979229588, 2386507.3424912374],
+            [-8566536.625633094, 2386851.309118521],
+            [-8565877.356264135, 2386192.039749561],
+            [-8568352.005054867, 2387434.1414591954],
+            [-8566804.155232092, 2387567.9062586944],
+            [-8565294.52392346, 2388160.2932279045],
+            [-8565065.212838605, 2386965.9646609486]
+        ]		
+    
+    for(var i=0;i<samples.length;i++){
+        var feature = new ol.Feature({
+            geometry: new ol.geom.Point(samples[i]),
+            name: '<div><img src="../../bundles/AtencionOnline/Escritorio/portal/desktop/images/atencion.png" width="250"><br>Este es el texto de una incidencia '+i+'</div>',
+            population: 4000,
+            rainfall: 500
+        });
+        feature.setStyle(iconStyle);
+        vectorSource.addFeature(feature);
+    }
+    
+ var element = document.getElementById('popup');
+
+var popup = new ol.Overlay({
+  element: element,
+  positioning: 'bottom-center',
+  stopEvent: false
+});
+map.addOverlay(popup);   
+    
+    
+    // display popup on click
+map.on('click', function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
+      function(feature, layer) {
+        return feature;
+      });
+  
+  if (feature) {
+   
+    var geometry = feature.getGeometry();
+    var coord = geometry.getCoordinates();
+    popup.setPosition(coord);
+    
+    $(element).popover({
+      'placement': 'top',
+      'html': true,
+      'title':'Incidencia ',
+      'content': feature.get('name')
+    });
+    $(element).popover('show');
+    
+  } else {
+    $(element).popover('destroy');
+  }
+});
+
+// change mouse cursor when over marker
+map.on('pointermove', function(e) {
+  if (e.dragging) {
+    $(element).popover('destroy');
+    return;
+  }
+  var pixel = map.getEventPixel(e.originalEvent);
+  var hit = map.hasFeatureAtPixel(pixel);
+  //map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+    /**
+    map.on('click', function(evt){
+        var feature = new ol.Feature(
+            new ol.geom.Point(evt.coordinate)
+        );
+        feature.setStyle(iconStyle);
+        vectorSource.addFeature(feature);
+    });*/
+    </script>
+  </div>

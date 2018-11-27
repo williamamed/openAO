@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset("bootstrap/ico/favicon.ico") }}">
+
+    <title>Online File Editor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
+    
+   <style>
+            body {
+                padding-top: 50px;
+              }
+              .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+              }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ asset("bootstrap/js/ie-emulation-modes-warning.js") }}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    
+
+    <div class="container">
+
+      <div class="starter-template">
+          <h1><img src="{{ asset('Raptor2/Editor/img/file.jpg') }}" width="110"></h1>
+        <h1>Online file editor</h1>
+        <p class="lead">Use this component to edit your sources files in the server.</p>
+      </div>
+      <div class="tab-content overflow">
+            <div class="tab-pane fade in active" id="list">
+                <!-- Panel de Botones -->
+                <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="create-field" placeholder="filename">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="create" type="button"><span class="glyphicon glyphicon-file" aria-hidden="true" style="margin-right: 5px;"></span>Create</button>
+                            </span>
+                        </div>
+                    </div>
+		    <div class="col-md-3">
+                        <a class="btn btn-primary" id="upload" type="button">Upload</a>
+                    </div>
+
+                </div>
+                
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    
+                    <div class="panel-heading text-center">Application File List </div>
+
+                    <!-- Table -->
+                    <table class="table file-table">
+
+                    </table>
+                </div> 
+            </div>
+            <!-- Ventana Formulario -->     
+            <div class="tab-pane fade in "  id="editing">
+                <p class="lead"></p>
+                 <div class="row">
+                            <div class="col-md-12">
+                                <div id="preview" style="width: 100%" ></div>
+                                <textarea id="editor-field" name="file-content" style="width: 100%"></textarea>
+                            </div>
+
+                 </div>
+                 <div class="row" style="margin-top: 30px;margin-bottom: 30px;">
+                            <div class="col-md-12">
+                                <a class="btn btn-danger" id="cancel" data-toggle="tab" href="#list"><span class="glyphicon glyphicon-off" aria-hidden="true" style="margin-right: 5px;"></span>Cancel</a>
+                                <a class="btn btn-success" id="save"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true" style="margin-right: 5px;"></span>Save</a>
+                                <a class="btn btn-danger pull-right" style="margin-bottom: 7px" id="delete" data-toggle="tab" href="#delete"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px;"></span>Delete</a>
+                            </div>
+                            <div class="col-md-4">
+                                
+                            </div>
+                 </div>
+                 
+                 </textarea>
+            </div>
+            
+     </div>
+       <footer class="footer text-center" style="padding: 10px;">
+
+                                <div class="container bar-success ">
+                                    <p>&copy; Dinobyte 2014-2016</p>
+                                    
+                                    
+
+                                </div>
+                            </footer>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bootstrap/js/all.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ asset("bootstrap/js/ie10-viewport-bug-workaround.js") }}"></script>
+    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir-table.js') }}"></script>
+    <script src="{{ asset('Raptor2/Editor/app/app.js') }}"></script>
+  </body>
+</html>

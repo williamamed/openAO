@@ -1,0 +1,11 @@
+{
+    "author": "GDAI Las Tunas",
+    "name": "NotificacionBundle",
+    "description": "Utilizado para el envio de notificaciones por correo en AtencionOnline",
+    "namespace": "AtencionOnline.NotificacionBundle.NotificacionBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installed": 1
+}

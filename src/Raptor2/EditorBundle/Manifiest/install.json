@@ -1,0 +1,12 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "EditorBundle",
+    "description": "EditorBundle 2.1, This a simple component for edit your proyect Raptor files in your web server",
+    "namespace": "Raptor2.EditorBundle.EditorBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Installer\/Install.php",
+    "installed": 1
+}

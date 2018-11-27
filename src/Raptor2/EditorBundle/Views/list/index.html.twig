@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{{ asset("bootstrap/ico/favicon.ico") }}">
+
+        <title>{% if trace|length>0 %}{{ trace[trace|length-1] }}{%else%}Home{%endif%}</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset("bootstrap/css/bootstrap.min.css") }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset("Raptor2/Editor/pace/theme/purple/pace-theme-minimal.css") }}" />
+        <script src="{{ asset("Raptor2/Editor/lib/src-noconflict/ace.js") }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ asset("Raptor2/Editor/lib/src-noconflict/ext-language_tools.js") }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ asset("Raptor2/Editor/pace/pace.min.js") }}"></script>
+        <style>
+                body {
+                    padding-top: 0px;
+                }
+                .starter-template {
+                    padding: 5px 15px;
+                    text-align: center;
+                }
+                .breadcrumb > a.breadcrumb-item::before {
+                    content: "/\00a0";
+                    padding: 0 5px;
+                    color: #ccc;
+                }
+                #editor-field {
+                    margin: 0;
+                    
+                    height: 500px;
+                }
+            </style>
+
+            <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+            <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+            <script src="{{ asset("bootstrap/js/ie-emulation-modes-warning.js") }}"></script>
+
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </head>
+
+        <body>
+
+
+
+            <div class="container" uir-app="Editor" data-route="{{ trace|join('/') }}">
+                <nav class="breadcrumb" dir="ltr">
+                    <a class="text-danger" href="{{ base }}">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true" style="margin-right: 5px;"></span>
+                    </a>
+                    {% set bread='' %}
+
+                    {%for i,item in trace%}
+                    <a class="breadcrumb-item" href="{{ base }}/{%if (trace|slice(0, i))|join('/') %}{{(trace|slice(0, i))|join('/')}}/{%endif%}{{ item }}">
+                        {{ item }}
+
+                        </a>
+                    {%endfor%}
+
+                    </nav> 
+                    <div class="starter-template">
+                        <h1><img src="{{ asset('Raptor2/Editor/img/code.png') }}" width="70"></h1>
+                        <h2>Online file editor v2.0.1</h2>
+                        <p class=" text-muted">Use this component to edit your sources files in the server.</p>
+                    </div>
+
+                    <div class="tab-content overflow ">
+                        <div class="tab-pane fade in active" id="list">
+                            <!-- Panel de Botones -->
+                            <div class="row" style="margin-bottom: 5px;">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="create-field" placeholder="filename">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Create file" id="create" type="button"><span class="glyphicon glyphicon-file" aria-hidden="true" style="margin-right: 5px;"></span>+</button>
+                                            <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Create directory" id="create-dir" type="button"><span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="margin-right: 5px;"></span>+</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-primary" id="upload" data-toggle="tooltip" data-placement="top" title="Upload file" href="{{ path('onlineeditor_upload') }}?directory={{ trace|join('/') }}" target="_blank" type="button"><span class="glyphicon glyphicon glyphicon-upload" aria-hidden="true" style="margin-right: 5px;"></span></a>
+                                    <a class="btn btn-danger" id="delete" data-toggle="tooltip" data-placement="top" title="Delete file"  href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px;"></span></a>
+                                    <a class="btn btn-info" href="{{ path('_raptor_onlineeditor_export') }}?file={{ trace|join('/') }}" data-toggle="tooltip" data-placement="top" title="Export file"  href="#"><span class="glyphicon glyphicon-briefcase" aria-hidden="true" style="margin-right: 5px;"></span></a>
+                                </div>
+
+                            </div>
+
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+
+                                <div class="panel-heading text-left"><i>{{ lista|length }} files</i> </div>
+
+                                <!-- Table -->
+                                <table class="table file-table">
+                                {%for item in lista%}
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                                {% if item['dir']%}
+                                                <a class="archivos directory" data-toggle="" href="{%if item['dir']%}{{ item['dirname'] }}{{ item['file'] }}{%else%}#{%endif%}" data-route="{{ item['path'] }}{{ item['file'] }}">
+                                                    <img src="{{ asset('Raptor2/Editor/img/folder-mat-3.png') }}" width="25">
+                                                {%else%}
+                                                    <a class="archivos file" target="_blank" href="{{ item['dirname'] }}{{ item['file'] }}" data-route="{{ item['path'] }}{{ item['file'] }}">
+                                                        <img src="{{ asset('Raptor2/Editor/img/file-mat-1.png') }}" width="25">
+                                                {%endif%}
+                                                {{ item['file'] }}
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                {%endfor%}
+
+                                    </table>
+                                </div> 
+                            </div>
+                            <!-- Ventana Formulario -->     
+                            
+
+                        </div>
+                        <footer class="footer text-center" style="padding: 10px;">
+
+                            <div class="container bar-success ">
+                                <p>&copy; Raptor2 - 2016</p>
+
+
+
+                            </div>
+                        </footer>
+                    </div><!-- /.container -->
+
+
+                    <!-- Bootstrap core JavaScript
+                    ================================================== -->
+                    <!-- Placed at the end of the document so the pages load faster -->
+                    <script src="{{ asset('bootstrap/js/all.js') }}"></script>
+                    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+                    <script src="{{ asset("bootstrap/js/ie10-viewport-bug-workaround.js") }}"></script>
+                    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+                    <script src="{{ asset('Raptor/UIR/js/uir.js') }}"></script>
+                    
+                    <script src="{{ asset('Raptor2/Editor/app/app.js') }}"></script>
+                </body>
+            </html>

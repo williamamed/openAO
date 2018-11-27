@@ -1,0 +1,10 @@
+{
+    "author": "Autor del componente",
+    "name": "UiComercialBundle",
+    "description": "...",
+    "namespace": "AtencionOnline.UiComercialBundle.UiComercialBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}

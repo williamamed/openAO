@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset("AtencionOnline/Publico/img/title.png") }}"> 
+
+    <title>Formulario público</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap/v4/css/bootstrap.min.css") }}" rel="stylesheet">
+
+   <style>
+            body {
+                padding-top: 20px;
+              }
+              .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+              }
+    </style>
+  </head>
+
+  <body>
+
+
+    <div class="container" style="padding: 10px;background: white;">
+          
+          <h1 class="text-center"><img src="{{ asset('AtencionOnline/Publico/img/logo.png') }}" width="110"></h1>
+         <h2 class="featurette-heading" style="text-align: center"><span class="text-info" >Estado de la incidencia</span></h2><br>
+         
+         <p class="lead text-center" style="color: #7a7a7a">{{ msg|raw }}</p><br>
+         
+         <hr>
+         <p class="">
+            {% if incidencia!=null %}
+                {% if incidencia.getEstado == 0 %}
+                    <h4>Su incidencia no ha sido atendida todavía</h4>
+                {% endif %}
+                {% if incidencia.getEstado == 1 %}
+                    <h4>Su incidencia ha sido atendida y recibida por el especialista <b>{{ incidencia.getRecibe }}</b> pero no se encuentra en estado de trámite todavía.</h4>
+                {% endif %}
+                {% if incidencia.getEstado == 2 %}
+                    <h4>Su incidencia ha sido atendida y recibida por el especialista <b>{{ incidencia.getRecibe }}</b>, se encuentra en estado de trámite.</h4>
+                {% endif %}
+                {% if incidencia.getEstado == 3 %}
+                    <h4>Su incidencia ha sido respondida y archivada.</h4>
+                {% endif %}
+                <br>
+                <p><b>Nombre:</b> {{ incidencia.getNombreApellidos }}</p><br>
+                <p><b>Su planteamiento:</b> {{ incidencia.getPlanteamiento }}</p><br>
+                
+                <p>Su planteamiento debe ser atendido y tramitado antes de la siguiente fecha <b>{{ incidencia.getFecha|date_modify(["+",incidencia.getTermino," day"]|join())|date("d/m/Y") }}</b>
+                </p><br>
+                <p><b>Respuesta ofrecida:</b> {{ incidencia.getRespuesta }}</p><br>
+                
+                <p><img src="{{ qr|raw }}"></p>
+            {% endif %}
+         </p><br>
+         
+    </div><!-- /.container -->
+
+  </body>
+</html>

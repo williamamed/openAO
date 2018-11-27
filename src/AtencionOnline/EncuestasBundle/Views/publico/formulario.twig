@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset("AtencionOnline/Publico/img/title.png") }}"> 
+
+    <title>Enlace público</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap/v4/css/bootstrap.min.css") }}" rel="stylesheet">
+
+   <style>
+            body {
+                padding-top: 50px;
+                background: #cccccc;
+                background-attachment: fixed;
+                background-size: cover;
+              }
+              .starter-template {
+                padding: 10px 15px;
+                text-align: center;
+              }
+            .container{
+                background: #ffffff;
+                padding-bottom: 30px;
+            }
+           
+    </style>
+
+  </head>
+
+  <body>
+
+    
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1></h1>
+        <h1>Formulario <span class="text-muted">{{ encuesta.getNombre }}</span></h1>
+        {% if encuesta.anonimo==false %}
+            <p class="lead">Por favor proporcione sus datos personales</p>
+        {% endif %}
+        
+      </div>
+        <hr>
+        <form id="encuesta" action="{{ path("atenciononline_formulario_enviado") }}" method="POST">
+            <input type="hidden" name="eid" value="{{ encuesta.getId }}">
+         {% if encuesta.anonimo==false %}
+        <div class="row" style="margin-bottom: 5px;">
+                        <div class="control-group col-md-4 offset-1" style="margin-top: 10px">
+                            <label class="control-label" >Nombre <b style="color: red">*</b></label>
+                            <input  type="text" class="form-control" name="nombre" placeholder="Jhon Doe">
+                        </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+                        <div class="control-group col-md-4 offset-1" style="margin-top: 10px">
+                            <label class="control-label" >Apellidos <b style="color: red">*</b></label>
+                            <input type="text" class="form-control" name="apellidos" placeholder="Griffin">
+                        </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+                        <div class="control-group col-md-7 offset-1" style="margin-top: 10px">
+                            <label class="control-label" >Dirección <b style="color: red">*</b></label>
+                            <textarea type="text" class="form-control" name="direccion" placeholder="Ave.1 #45 Libertad, California"></textarea>
+                        </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+                        
+                        <div class="control-group col-md-4 offset-1" style="margin-top: 10px">
+                            <label class="control-label" >CI <b style="color: red">*</b></label>
+                            <input type="text" class="form-control" name="ci" placeholder="884993993">
+                        </div>
+        </div>
+      {% endif %}
+      <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-md-10 offset-1">
+                          
+                       <hr> 
+                      {% for key, item in encuesta.getPreguntas %}
+                        <div class="control-group" style="margin-top: 20px;padding-top: 20px;">
+                            <label class="control-label" ><b>{{ item.getPregunta }} {% if item.getOpcional==false %}<span style="color: red">*</span>{% endif %}</b></label>
+                            
+                                {% if item.getTipo==2 %}
+                                    {% for campos in item.getCampos %}
+                                        <textarea name="{{item.getPregunta}}|enRap|text|{{campos.getId}}" class="form-control" value="" placeholder=""></textarea>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if item.getTipo==0 %}
+                                    
+                                        {% for campos in item.getCampos %}
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="{{item.getPregunta}}|enRap|opt"  value="{{campos.getId}}">
+                                                    {{campos.getRespuesta}}
+                                                </label>
+                                            </div>
+                                            
+                                        {% endfor %}
+                                    
+                                {% endif %}
+                                {% if item.getTipo==1 %}
+                                   
+                                        {% for campos in item.getCampos %}
+                                                <div class="checkbox" >
+                                                <label>
+                                                    <input type="checkbox" name="{{item.getId}}|{{campos.getId}}|enRap|opt" value="{{campos.getId}}">
+                                                {{campos.getRespuesta}}
+                                                </label>
+                                                 </div>           
+                                            
+                                        {% endfor %}
+                                      
+                                {% endif %}
+                           
+                       
+                       </div>
+                       <hr>
+                      {% endfor %}
+                            
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="row" style="margin-bottom: 5px;">
+                        
+                        <div class="control-group col-md-4 offset-1" style="margin-top: 10px">
+                            
+                            <input type="submit" class="btn btn-success"  value="Enviar">
+                        </div>
+                </div>
+                
+                </form>
+        
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bootstrap/js/all.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ asset("bootstrap/js/ie10-viewport-bug-workaround.js") }}"></script>
+    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir.js') }}"></script>
+    <script src="{{ asset('Raptor/js/form/form.validation.js') }}"></script> 
+    <script type="text/javascript">
+        $(document.body).ready(function(){
+            $('#encuesta').validate({
+                    //focusInvalid: false,
+                    onkeyup: false,
+                    onfocusout: false,
+                    //by default the error elements is a <label>
+                    errorElement: "div",
+                    //place all errors in a <div id="errors"> element
+                    errorPlacement: function(error, element) {
+                        
+                        var el = $('<b place="error">').append(" Este campo es obligatorio");
+                        el.css({color: 'red'});
+                        var cont=element.parents('.control-group').find('.control-label');
+                        if(element.parents('.control-group').find('.control-label:has(b[place="error"])'))
+                            cont.find('b[place="error"]').remove();
+                        cont.append(el);
+                        
+                    },
+                    
+                    rules: {
+                        'nombre':'required',
+                        'apellidos':'required',
+                        'direccion':'required',
+                        'ci':{
+                            required:true,
+                            digits: true 
+                        },
+                        {% for key, item in encuesta.getPreguntas %}
+                            {% if item.getOpcional==false %}
+                                {% if item.getTipo==2 %}
+                                   
+                                    '{{item.getPregunta}}|enRap|text|{{item.getCampos[0].getId}}':{required:true},
+                                {% endif %}
+                                {% if item.getTipo==0 %}
+                                        '{{item.getPregunta}}|enRap|opt':{required:true},
+                                {% endif %}
+                                {% if item.getTipo==1 %}
+                                    {% for campos in item.getCampos %}
+                                        '{{item.getId}}|{{campos.getId}}|enRap|opt':{required:function(el){
+                                                
+                                               return $(el).parents('.control-group').find('input:checked').length === 0;
+                                                    
+                                                
+                                        }},
+                                    {% endfor %}
+                                {% endif %}
+                           
+                           {% endif %}
+                      {% endfor %}
+                    }
+
+                });
+        })
+        
+        
+    </script>
+  </body>
+</html>

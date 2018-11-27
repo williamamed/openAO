@@ -1,0 +1,7 @@
+
+hermes.on('request-raptor-login-ok',function(data){
+     window.location.reload()
+})
+
+hermes.send('request-raptor-login',{login:true})
+

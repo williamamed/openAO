@@ -1,0 +1,36 @@
+{
+    "database": {
+        "driver": "pdo_mysql",
+        "dbname": "aogob",
+        "user": "root",
+        "port": "",
+        "password": "root",
+        "host": "localhost"
+    },
+    "raptor": {
+        "language": "es",
+        "secret": "6k3i6690@cj34%k#0jk4e@0gdd$i393%",
+        "cache": "3",
+        "services": "http:\/\/localhost\/Raptor2\/web\/index.php",
+        "locales": [
+            "es",
+            "en"
+        ],
+        "name": "Raptor3"
+    },
+    "syntarsus": {
+        "auth": "native",
+        "samlbase": "http:\/\/localhost\/Raptor3\/Raptor3-master\/web"
+    },
+    "email":{
+        "smtp_server":"10.11.32.2",
+        "smtp_port":"465",
+        "smtp_user":"william.tamayo",
+        "smtp_fullemail":"william.tamayo@ltu.jovenclub.cu",
+        "smtp_password":"pepillo31lily.asd",
+        "ssl":true,
+        "email_list":["william.tamayo@ltu.jovenclub.cu"],
+        "email_name":"open AO",
+        "system_name":"open AO"
+    }
+}

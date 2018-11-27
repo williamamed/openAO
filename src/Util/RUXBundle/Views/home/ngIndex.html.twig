@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <link rel="icon" href="{%if plugin('rux_icon')%}{{ plugin('rux_icon') }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}">
+
+        <title>{%if plugin('rux_name')%}{{ plugin('rux_name') }}{%else%}{{ appname }} {{ version }}{%endif%}</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('bootstrap/v4/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('angular/angular-material.min.css') }}" rel="stylesheet">
+
+        <script src="{{ asset('angular/angular.min.js') }}"></script>
+        <script src="{{ asset('angular/angular-route.min.js') }}"></script>
+        <script src="{{ asset('angular/angular-animate.min.js') }}"></script>
+        <script src="{{ asset('angular/angular-aria.min.js') }}"></script>
+        <script src="{{ asset('angular/angular-messages.min.js') }}"></script>
+        <script src="{{ asset('angular/angular-material.min.js') }}"></script>
+        <link href="{{ asset('Raptor/UIR/css/uir-all.css') }}" rel="stylesheet">
+
+        <style>
+            body {
+                padding-top: 56px;
+            }
+            .starter-template {
+                padding: 3rem 1.5rem;
+                text-align: center;
+            }
+            .nav-doc-bar{
+                box-shadow: 2px 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+                background: #606060;
+            }
+            .md-sidenav-left .md-theme-indigo, .md-sidenav-left .nav-theme {
+                background-color: #33393f;
+                min-height: initial !important;
+            }
+            .md-sidenav-left .md-theme-indigo p{
+                padding:8px;
+            }
+            .md-sidenav-left{
+                width: 250px
+            }
+            .folder-es{
+                background: #5b5b5b;
+                color: white;
+                padding: 10px
+            }
+            md-autocomplete input{
+                color: white !important
+            }
+            .md-virtual-repeat-container.md-autocomplete-suggestions-container{
+                z-index: 1000000;
+            }
+
+
+        </style>
+        {{ plugin('rux_header')|raw}}
+    </head>
+
+    <body ng-app="ruxApp">
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top nav-doc-bar" style="">
+            <a class="navbar-brand" href="#"> {%if plugin('rux_name')%}{{ plugin('rux_name') }}{%else%}{{ appname }} {{ version }}{%endif%}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div  class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    
+                </ul>
+                <ul class="navbar-nav mr-right">
+
+
+                    <li class="nav-item"><a class="nav-link" href="#!/e/{{ routename }}/home/description" class="function-home"><span class="glyphicon glyphicon-home" style="margin-right: 5px"></span>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!/e/{{ routename }}/profile" class="function-profile"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Perfil</a></li>
+                        {{ plugin('rux_navbar')|raw}}
+                    <li class="nav-item"><a class="nav-link" href="home/logout" class="function-logout"><span class="glyphicon glyphicon-log-out" style="margin-right: 5px"></span>Salir</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div ng-controller="MyController" layout="column" style="height:100%;" ng-cloak>
+
+        <section layout="row" flex>
+
+            <md-sidenav
+                class="md-sidenav-left"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')"
+                md-whiteframe="4">
+
+                <md-toolbar class="md-theme-indigo">
+                    <p class="text-center" ><img src="{%if plugin('rux_icon')%}{{ plugin('rux_icon') }}{%else%}{{ asset("Util/RUX/img/logo.png") }}{%endif%}" height="90"></p>
+
+                </md-toolbar>
+                <md-content layout-padding >
+                    <ul class="nav nav-sidebar flex-column">
+                        {% if modules|length ==0 %}
+
+                        {% else %}
+                            {% for menuItem in modules %}
+                                {% if menuItem['type']==2 %}
+                                    <li class="nav-item {{ menuItem['className'] }}" ><a class=""><b style="color: #333333">{{ menuItem['name'] }}</b></a>
+
+                                        {% for child in menuItem.children %}
+                                            {% if child['type']==0 %}
+                                            <li class="nav-item"><a class="nav-link {{ child['className'] }}" route="{{ child['route'] }}">
+                                                    {% if child['icon'] %}
+                                                        {% if plugin('rux_sidebar_iconbase') %}              
+                                                            <img src="{{ asset([plugin('rux_sidebar_iconbase'),child['icon'],".png"]|join()) }}" width="30">
+                                                        {% else %}
+                                                            <img src="{{ asset(["Util/RUX/menu/",child['icon'],".png"]|join()) }}" width="30">
+                                                        {% endif %}     
+                                                    {% else %}
+                                                        <img src="{{ asset("Util/RUX/img/menu-item.png") }}" width="30">
+                                                    {% endif %}
+
+                                                    {{ child['name']|raw }}</a></li>
+                                                {% else %}
+
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </li>        
+
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% if modules|length>0 %}
+
+                            <ul class="nav nav-sidebar flex-column">
+                                {% for menuItem in modules %}
+                                    {% if menuItem['type']==0 %}
+
+                                        <li><a class="nav-link {{ menuItem['className'] }}" route="{{ menuItem['route'] }}">
+                                                {% if menuItem['icon'] %}
+                                                    {% if plugin('rux_sidebar_iconbase') %}              
+                                                        <img src="{{ asset([plugin('rux_sidebar_iconbase'),menuItem['icon'],".png"]|join()) }}" width="25">
+                                                    {% else %}
+                                                        <img src="{{ asset(["Util/RUX/menu/",menuItem['icon'],".png"]|join()) }}" width="25">
+                                                    {% endif %}                                  
+
+                                                {% else %}
+                                                    <img src="{{ asset("Util/RUX/img/menu-item.png") }}" width="25">
+                                                {% endif %}
+
+                                                {{ menuItem['name'] }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}                           
+                            </ul>        
+
+                        {% endif %}    
+
+
+                    {% endif %}
+
+                    {{ plugin('rux_sidebar')|raw}}
+
+                </md-content>
+
+            </md-sidenav>
+
+            <md-content flex layout-padding>
+
+                <div layout="column" layout-align="">
+                    <div role="main" class="container" ng-view></div>
+
+                </div>
+
+                <div flex></div>
+
+            </md-content>
+
+
+        </section>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bootstrap/js/jquery.js') }}"></script>
+    <script src="{{ asset('bootstrap/v4/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+    <script src="{{ asset('Raptor/UIR/js/uir-all.js') }}"></script>
+    <script>
+        Raptor.rux={
+            route:'{{routename}}'
+        }
+    </script>
+    <script src="{{ asset('Util/RUX/ng/app.js') }}"></script>
+    <script src="{{ asset('Util/RUX/ng/profile.controller.js') }}"></script>
+    {{ plugin('rux_script')|raw}}
+    
+</body>
+</html>

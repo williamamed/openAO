@@ -1,0 +1,12 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "PutOffLineBundle",
+    "description": "Componente para crear un portal de mantenimiento con cuenta regresiva, lista de exclusion de IP",
+    "namespace": "Raptor2.PutOffLineBundle.PutOffLineBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Manifiest\/Install.php",
+    "installed": 1
+}

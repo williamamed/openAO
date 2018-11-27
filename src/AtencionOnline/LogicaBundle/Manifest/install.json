@@ -1,0 +1,10 @@
+{
+    "author": "Autor del componente",
+    "name": "LogicaBundle",
+    "description": "...",
+    "namespace": "AtencionOnline.LogicaBundle.LogicaBundle",
+    "version": "1.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}

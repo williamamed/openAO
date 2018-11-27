@@ -1,0 +1,29 @@
+
+.md-sidenav-left md-content{
+    background-color: #464c53;
+}
+.md-sidenav-left .nav-link{
+    color: white !important;
+}
+.md-sidenav-left a b{
+    color: #bec0c1 !important;
+}
+.hide{
+    display: none !important;
+}
+
+.uir-load .indicator{
+    background-image: url( ../identity/hand.gif ) !important;
+    width: 75px !important;
+    margin-left: -37.5px !important;
+    height: 71px !important;
+    margin-top: -50px !important;
+    background-size: 100% 100% !important;
+}
+.uir-load{
+    background: rgba(100,100,100,0.6) !important;
+}
+.uir-load .uir-load-text{
+    color: white !important;
+}
+

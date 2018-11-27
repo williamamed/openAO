@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{{ asset("AtencionOnline/Publico/img/title.png") }}"> 
+
+        <title>Enlace público</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset("bootstrap/v4/css/bootstrap.min.css") }}" rel="stylesheet">
+
+        <style>
+            body {
+                padding-top: 50px;
+            }
+            .starter-template {
+
+                text-align: center;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+
+
+        <div class="container-fluid">
+
+            <div class="starter-template">
+
+                <h1>Enlace público de registro de incidencias</h1>
+                <p class="lead">Utilice la ruta del enlace o el botón a continuación para crear un formulario público de incidencias<br> para la estructura {{ estructura }}.</p>
+            </div>
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-md-10 offset-1">
+                    <label class="control-label" >Ruta del enlace</label>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" value="{{ url }}{{ param }}" id="create-field" placeholder="Enlace público">
+                        <span class="input-group-append">
+                            <a class="btn btn-success" href="{{ url }}{{ param }}" target="_blanck" id="create" type="button"><span class="glyphicon glyphicon-file" aria-hidden="true" style="margin-right: 5px;"></span>Ir</a>
+                        </span>
+
+                    </div>
+                    <div class="control-group" style="margin-top: 10px">
+                        <label class="control-label" >Botón del enlace <span style="color: #666666">(copie y pegue el siguiente código en su página para crear un botón con enlace al formulario público)</span></label>
+                        <div class="controls">
+                            <textarea class="form-control" style="height: 90px">
+<a target="_blank" href="{{ url }}{{ param }}" style="background: #3d5afe;color:white;padding: 10px;padding-left: 20px;padding-right: 20px;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight: 300;font-size: 12px;cursor:pointer;text-decoration: none;box-shadow: 0 1px 4px rgba(0, 0, 0, .6);border-radius: 2px;outline: none;" ><img src="{{ baseurl }}{{ asset("AtencionOnline/Publico/img/title.png") }}" height="20" style="margin-right: 5px">Enviar incidencia</a>
+                            </textarea>
+                        </div>
+                        <h1 class="text-center">
+                            <a target="_blank" href="{{ url }}{{ param }}" style="background: #3d5afe;color:white;padding: 10px;padding-left: 20px;padding-right: 20px;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight: 300;font-size: 12px;cursor:pointer;text-decoration: none;box-shadow: 0 1px 4px rgba(0, 0, 0, .6);border-radius: 2px;outline: none;" ><img src="{{ baseurl }}{{ asset("AtencionOnline/Publico/img/title.png") }}" height="20" style="margin-right: 5px">Enviar incidencia</a>
+                        </h1>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('bootstrap/js/jquery.js') }}"></script>
+        <script src="{{ asset('bootstrap/v4/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+        <script src="{{ asset('Raptor/UIR/js/uir-all.js') }}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "exampleBundle",
+    "description": "This is a bundle example",
+    "namespace": "examples.exampleBundle.exampleBundle",
+    "version": "1.0.3",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Installer\/Install.php"
+}

@@ -1,0 +1,228 @@
+<?php
+
+namespace AtencionOnline\EncuestasBundle\Model\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AtencionOnline\EncuestasBundle\Model\Entity\AtenciononlineEncuestas
+ *
+ * @Table(name="atenciononline_encuestas")
+ * @Entity(repositoryClass="AtencionOnline\EncuestasBundle\Model\Repository\AtenciononlineEncuestasRepository")
+ */
+class AtenciononlineEncuestas
+{
+    /**
+     * @var integer $id
+     *
+     * @Column(name="id", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $nombre
+     *
+     * @Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var boolean $tipo
+     *
+     * @Column(name="tipo", type="boolean", nullable=false)
+     */
+    private $tipo;
+
+    /**
+     * @var integer $estado
+     *
+     * @Column(name="estado", type="integer", nullable=false)
+     */
+    private $estado;
+
+    /**
+     * @var boolean $anonimo
+     *
+     * @Column(name="anonimo", type="boolean", nullable=false)
+     */
+    private $anonimo;
+
+    /**
+     * @var string $enlace
+     *
+     * @Column(name="enlace", type="string", length=255, nullable=false)
+     */
+    private $enlace;
+    
+    /**
+     * Bidireccional - Uno-A-Muchos (Lado inverso)
+     *
+     * @OneToMany(targetEntity="AtencionOnline\EncuestasBundle\Model\Entity\AtenciononlinePreguntas", mappedBy="idEncuesta", cascade={"remove"})
+     */
+    private $preguntas;
+    
+    /**
+     * @var Raptor2\SyntarsusBundle\Model\Entity\SecurityEstructure
+     *
+     * @ManyToOne(targetEntity="Raptor2\SyntarsusBundle\Model\Entity\SecurityEstructure")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_estructura", referencedColumnName="id")
+     * })
+     */
+    private $idEstructura;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return AtenciononlineEncuestas
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param boolean $tipo
+     * @return AtenciononlineEncuestas
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return boolean 
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param integer $estado
+     * @return AtenciononlineEncuestas
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return integer 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set anonimo
+     *
+     * @param boolean $anonimo
+     * @return AtenciononlineEncuestas
+     */
+    public function setAnonimo($anonimo)
+    {
+        $this->anonimo = $anonimo;
+        return $this;
+    }
+
+    /**
+     * Get anonimo
+     *
+     * @return boolean 
+     */
+    public function getAnonimo()
+    {
+        return $this->anonimo;
+    }
+
+    /**
+     * Set enlace
+     *
+     * @param string $enlace
+     * @return AtenciononlineEncuestas
+     */
+    public function setEnlace($enlace)
+    {
+        $this->enlace = $enlace;
+        return $this;
+    }
+
+    /**
+     * Get enlace
+     *
+     * @return string 
+     */
+    public function getEnlace()
+    {
+        return $this->enlace;
+    }
+
+    /**
+     * Set idEstructura
+     *
+     * @param Raptor2\SyntarsusBundle\Model\Entity\SecurityEstructure $idEstructura
+     * @return AtenciononlineEncuestas
+     */
+    public function setIdEstructura(\Raptor2\SyntarsusBundle\Model\Entity\SecurityEstructure $idEstructura = null)
+    {
+        $this->idEstructura = $idEstructura;
+        return $this;
+    }
+
+    /**
+     * Get idEstructura
+     *
+     * @return Raptor2\SyntarsusBundle\Model\Entity\SecurityEstructure 
+     */
+    public function getIdEstructura()
+    {
+        return $this->idEstructura;
+    }
+    
+    /**
+     * Get idEstructura
+     *
+     * @return @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPreguntas()
+    {
+        return $this->preguntas;
+    }
+}

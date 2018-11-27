@@ -1,0 +1,10 @@
+{
+    "author": "Autor del componente",
+    "name": "MensajeriaBundle",
+    "description": "...",
+    "namespace": "AtencionOnline.MensajeriaBundle.MensajeriaBundle",
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}

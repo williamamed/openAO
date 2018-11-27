@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modelo de recepción</title>
+         
+         <link href="{{ asset('AtencionOnline/Logica/css/table.css') }}" rel="stylesheet">
+         
+         
+         
+    </head>
+    <body>
+        <div id="print" class="btn .btn-small btn-primary impresion-print"><i class="icono"></i><span>Imprimir</span></div>
+       <div  style="background:white;padding:25px;margin:5px;border: 0px;width:95%;">
+                
+                <table align="center" class="table-modelo">
+                <tr><td style="text-align:center"><img src="{{ asset('AtencionOnline/Logica/css/title.png') }}" width="60" ><h3>Modelo de recepción de la Incidencia<br>Dirección de atención a la población</h3></td></tr>
+                <tr><tr><td><b>No. Consecutivo:</b> {{solicitud.noConsecutivo}}</td></tr></tr>
+                <tr><td><b>Exp. organismo Central:</b> {{solicitud.expOc}}</td></tr>
+                <tr><td><b>Fecha:</b> {{ solicitud.fecha|date('d/m/Y') }}</td></tr>
+                <tr><td><b>Nombre y Apellidos: </b>{{solicitud.nombreApellidos}}</td></tr>
+                {% if solicitud.sexo==1 %}
+                    <tr><td><b>Sexo:</b>Femenino</td></tr>
+                {%endif%}
+                {% if solicitud.sexo==0 %}
+                    <tr><td><b>Sexo:</b>Masculino</td></tr>
+                {%endif%}
+                
+                <tr><td><b>Edad:</b> {{solicitud.edad}}</td></tr>
+                
+                {% if solicitud.nivelEscolar==0 %}
+                   <tr><td><b>Nivel Escolar:</b> Primaria </td></tr>
+                {%endif%}
+                {% if solicitud.nivelEscolar==1 %}
+                   <tr><td><b>Nivel Escolar:</b> Secundaria </td></tr>
+                {%endif%}
+                {% if solicitud.nivelEscolar==2 %}
+                   <tr><td><b>Nivel Escolar:</b> Pre-Universitario </td></tr>
+                {%endif%}
+                {% if solicitud.nivelEscolar==3 %}
+                   <tr><td><b>Nivel Escolar:</b> Técnico medio </td></tr>
+                {%endif%}   
+                {% if solicitud.nivelEscolar==4 %}
+                   <tr><td><b>Nivel Escolar:</b> Obrero calificado </td></tr>
+                {%endif%}
+                {% if solicitud.nivelEscolar==5 %}
+                   <tr><td><b>Nivel Escolar:</b> Universitario </td></tr>
+                {%endif%}
+                {% if solicitud.nivelEscolar==6 %}
+                   <tr><td><b>Nivel Escolar:</b> No tiene </td></tr>
+                {%endif%}
+                   
+                    {% if solicitud.ocupacion==0 %}
+                        <tr><td><b>Ocupación:</b> No tiene </td></tr>
+                    {%endif%}
+                    {% if solicitud.ocupacion==1 %}
+                        <tr><td><b>Ocupación:</b> Estudiante </td></tr>
+                    {%endif%}
+                    {% if solicitud.ocupacion==2 %}
+                        <tr><td><b>Ocupación:</b> Servicio </td></tr>
+                    {%endif%}
+                    {% if solicitud.ocupacion==3 %}
+                        <tr><td><b>Ocupación:</b> Técnico </td></tr>
+                    {%endif%}
+                    {% if solicitud.ocupacion==4 %}
+                        <tr><td><b>Ocupación:</b> Dirigente </td></tr>
+                    {%endif%}
+                <tr><td><b>Dirección Particular:</b> {{solicitud.direccion}}</td></tr>
+                <tr><td><b>Teléfono donde se puede localizar:</b> {{solicitud.telefono}}</td></tr>
+                <tr><td><b>Organismo o persona contra quien va drigida la incidencia:</b> {{solicitud.dirigido}}</td></tr>
+                <tr><td><b>Entidad superior y Organismo a la pertenece:</b> {{solicitud.entidadPertenece}}</td></tr>
+                <tr><td><div style="min-height: 150px;"><b>Síntesis del planteamiento formulado: </b><br>{{solicitud.planteamiento}}</div></td></tr>
+                <tr><td><b>Vía o medio de comunicación:</b> {{solicitud.idViasComunicacion.nombre}}</td></tr>
+                <tr><td><b>Tipo de incidencia:</b> {{solicitud.idTipo.nombre}}</td></tr>
+                <tr><td><b>Recibe:</b> {{solicitud.recibe}}</td></tr>
+                <tr><td><b>Firma del que recibe:</b> </td></tr>
+                <tr><td><b>Se traslada a:</b> {{solicitud.traslada}}</td></tr>
+                <tr><td><b>Con término: </b>{{solicitud.termino}} días</td></tr>
+                <tr ><td ><div style="min-height: 150px;"><b >Síntesis de la respuesta ofrecida o de la decisión adoptada:</b><br> {{solicitud.respuesta}}</div></td></tr>
+                
+                 {% if solicitud.razon==0 %}
+                        
+                        {% if solicitud.razon is null %}
+                            <tr><td><b>Razón del cliente:</b> -</td></tr>
+                        {% else %}
+                            <tr><td><b>Razón del cliente:</b> Con razón</td></tr>
+                        {%endif%}
+                 {%endif%}
+                 {% if solicitud.razon==1 %}
+                        <tr><td><b>Razón del cliente:</b> Con razón en parte</td></tr>
+                 {%endif%}
+                 {% if solicitud.razon==2 %}
+                        <tr><td><b>Razón del cliente:</b> Sin razón</td></tr>
+                 {%endif%}
+                 {% if solicitud.razon==3 %}
+                        <tr><td><b>Razón del cliente:</b> No se demuestra</td></tr>
+                 {%endif%}
+                
+                        
+                {% if solicitud.conforme==true %}
+                        <tr><td><b>Conforme:</b> Sí</td></tr>
+                 {%endif%}
+                 {% if solicitud.conforme==false %}
+                        {% if solicitud.conforme is null %}
+                            <tr><td><b>Conforme:</b> -</td></tr>
+                        {% else %}
+                            <tr><td><b>Conforme:</b> No</td></tr>
+                        {%endif%}
+                        
+                 {%endif%}
+                 
+                 
+                <tr><td><b>Firma del Promovente:</b> </td></tr>
+                </table>
+            </div>
+       <script src="{{ asset('bootstrap/js/jquery.js') }}"></script>
+       <script type="text/javascript" >
+            $(document.body).ready(function(){
+                $('#print').click(function(){
+                    $(this).remove();
+                    window.print();
+                })
+                $('#print').remove()
+            });
+       </script>
+      
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "author": "Dinobyte S.L",
+    "name": "DocVersion3Bundle",
+    "description": "RaptorDoc v2.0.2",
+    "namespace": "Raptor3.DocVersion3Bundle.DocVersion3Bundle",
+    "version": "3.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    },
+    "installScript": "Manifiest\/Install.php"
+}
