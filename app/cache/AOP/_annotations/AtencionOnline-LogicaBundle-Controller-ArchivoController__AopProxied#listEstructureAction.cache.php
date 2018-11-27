@@ -1,1 +1,0 @@
-<?php return unserialize('a:2:{i:0;O:31:"Raptor\\Bundle\\Annotations\\Route":6:{s:4:"path";s:15:"/listestructure";s:4:"name";N;s:6:"method";s:3:"ALL";s:4:"csrf";b:0;s:4:"rule";N;s:11:"description";s:33:"Lista las estructuras del usuario";}i:1;O:32:"Raptor\\Bundle\\Annotations\\Inyect":1:{s:6:"params";s:9:"syntarsus";}}');
