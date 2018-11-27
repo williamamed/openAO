@@ -21,16 +21,5 @@
     "syntarsus": {
         "auth": "native",
         "samlbase": "http:\/\/localhost\/Raptor3\/Raptor3-master\/web"
-    },
-    "email":{
-        "smtp_server":"10.11.32.2",
-        "smtp_port":"465",
-        "smtp_user":"william.tamayo",
-        "smtp_fullemail":"william.tamayo@ltu.jovenclub.cu",
-        "smtp_password":"pepillo31lily.asd",
-        "ssl":true,
-        "email_list":["william.tamayo@ltu.jovenclub.cu"],
-        "email_name":"open AO",
-        "system_name":"open AO"
     }
 }
