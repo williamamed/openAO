@@ -5,7 +5,8 @@
     "namespace": "AtencionOnline.EncuestasBundle.EncuestasBundle",
     "version": "0.0.1",
     "require": {
-        "system": ">=@3.0.1"
+        "system": ">=@3.0.1",
+        "Syntarsus": ">=@3.0.1"
     },
     "installScript": "Manifiest\/Installer.php",
     "installed": 1

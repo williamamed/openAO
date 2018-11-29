@@ -52,8 +52,8 @@ class DefaultController extends Controller{
     /**
      * 
      *
-     * @Route("/enviar")
-     * @RouteName atenciononline_formulario_enviado
+     * @Route("/enviar",name="atenciononline_formulario_enviado")
+     *  
      * 
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
@@ -102,7 +102,10 @@ class DefaultController extends Controller{
             }
         }
         $this->getStoreManager()->flush();
-        return "Formulario enviado";
+        return $this->render("@EncuestasBundle/publico/msg.html.twig", array(
+            'title'=>'Gracias por llenar nuestra encuesta',
+            'msg'=>'¡ Los datos de la encuesta fueron enviados !'
+        ));
     }
     
     
