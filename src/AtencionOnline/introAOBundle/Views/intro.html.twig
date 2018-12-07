@@ -5,9 +5,15 @@
         <title>openAO</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Descripción openAO">
+        <meta name="description" content="Open AO es un proyecto abierto dirigido a ofrecer una alternativa libre y totalmente gratuita para la gestión de incidencias de cualquier actividad de servicio. ">
         <meta name="author" content="Proyecto Raptor">
-
+        
+        <meta property="og:title" content="Proyecto Raptor" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="http://openao.dinobyte.net/" />
+        <meta property="og:image" content="http://openao.dinobyte.net/bundles/AtencionOnline/introAO/img/logo.png" />
+        <meta property="og:description" content="Open AO es un proyecto abierto dirigido a ofrecer una alternativa libre y totalmente gratuita para la gestión de incidencias de cualquier actividad de servicio. " />
+        
         <!-- Le styles -->
         <link href="{{ asset('bootstrap/v4/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('Raptor/css/icons_rpt.css') }}" rel="stylesheet">
@@ -25,7 +31,7 @@
             }
             .jumbotron2{
                 padding-top: 100px;
-                padding-bottom: 100px
+                padding-bottom: 25px
             }
 
 
@@ -129,6 +135,22 @@
                 </p>
                 <p class="text-center">
                     <img src="{{ asset("AtencionOnline/introAO/img/tomas.png") }}">
+                </p>
+            </div>
+            
+            <div class="jumbotron2">
+                <h2 class="text-center">Aplicación móvil</h2>
+                <br>
+                <p>
+                    La aplicación móvil contiene el formulario donde podrán enviarse las incidencias a la plataforma de Atención a la población configurada, cuenta además
+                    con un registro de todas las incidencias(reclamación, queja etc.) enviadas pudiendo verificar en cada momento el estado en que se encuentra dicha incidencia.
+                </p>
+                
+                <p>
+                    <a class="btn btn-success" href="/openAO.apk">Descargar</a>
+                </p>
+                <p class="text-center">
+                    <img src="{{ asset("AtencionOnline/introAO/img/apk.png") }}" height="300">
                 </p>
             </div>
             

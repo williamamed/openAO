@@ -1,0 +1,11 @@
+{
+    "author": "Autor del componente",
+    "name": "introAOBundle",
+    "description": "",
+    "namespace": "AtencionOnline.introAOBundle.introAOBundle",
+    "installed": 1,
+    "version": "0.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}

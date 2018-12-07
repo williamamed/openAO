@@ -1,0 +1,11 @@
+{
+    "author": "Proyecto Raptor",
+    "name": "ngPortalBundle",
+    "description": "Portal de Angular con sistemas de rutas incluido",
+    "namespace": "Util.ngPortalBundle.ngPortalBundle",
+    "installed": 1,
+    "version": "1.0.1",
+    "require": {
+        "system": ">=@3.0.1"
+    }
+}
