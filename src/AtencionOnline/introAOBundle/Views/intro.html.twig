@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>openAO</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Descripción openAO">
+        <meta name="author" content="Proyecto Raptor">
+
+        <!-- Le styles -->
+        <link href="{{ asset('bootstrap/v4/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('Raptor/css/icons_rpt.css') }}" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+
+            }
+            .jumbotron{
+                background-image: url({{ asset('AtencionOnline/introAO/img/office.png') }});
+                background-position: center;
+                background-size: cover;
+                height: 400px;
+                background-color: #262b30;
+            }
+            .jumbotron2{
+                padding-top: 100px;
+                padding-bottom: 100px
+            }
+
+
+        </style>
+
+
+
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="../assets/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Fav and touch icons -->
+       
+        <link rel="shortcut icon" href="{{ asset('AtencionOnline/Publico/img/logo.png') }}">
+    </head>
+
+    <body class="fondo">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark raptor-panel">
+            <a class="navbar-brand" href="#"><i style="margin-right: 5px;"><img src="{{ asset('AtencionOnline/Publico/img/logo.png') }}" height="35"></i> openAO {{ version }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
+
+
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1 style="color: #5a32a3;text-shadow: 0 2px 0 #FFFFFF;margin-bottom: 30px"><img src="{{ asset('AtencionOnline/Publico/img/logo.png') }}" height="100"></h1>
+                <p style="color: #FFFFFF;">
+                    Open AO es un proyecto abierto dirigido a ofrecer una alternativa libre y totalmente 
+                    gratuita para la gestión de incidencias de cualquier actividad de servicio.
+                    Esta versión es mantenida por el Proyecto Raptor, desarrollada bajo licencia MIT y utilizando
+                    la tecnología de la serie 3 del proyecto. La plataforma podrá ser modificada y adaptada a cada 
+                    una de las necesidades, colaborar con nuevas funcionalidades respetando el derecho de los autores originales de la obra 
+                    así como el nombre establecido para la misma.
+                </p>
+                <p><a class="btn btn-primary btn-lg" href="ao/home" role="button">Probar Demo &raquo;</a></p>
+            </div>
+        </div>
+
+            <div class="container" style="padding: 60px">
+            <!-- Example row of columns -->
+            <div class="row" style="text-align: center">
+                <div class="col-md-4">
+                    <img src="{{ asset("AtencionOnline/UiComercial/menu/registro.png") }}" width="120" class="" alt="gestion">
+                    <h2>Gestión de incidencias</h2>
+                    <p>
+                        Recepción, trámite y archivo de incidencias basado en estructuras organizacionales subordinadas, 
+                        permite la clasificación y reportes de acuerdo al clasificador, tipo de incidencias y vías de
+                        comunicación.
+                        Las empresas que están orientadas a la satisfacción del cliente, incorporan sistemas y actuaciones
+                        para cometer el menor número posible de errores que entorpezcan esta satisfacción.
+                    </p>
+                    <p></p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset("AtencionOnline/UiComercial/menu/enlace.png") }}" width="120" class="" alt="interaccion">
+                    <h2>Interacción</h2>
+                    <p>
+                        Dispone de un formulario público por estructura de forma online así como una aplicación móvil donde pueden ser registradas las incidencias,
+                        el estado de las incidencias del cliente podrán ser verificadas por el usuario en todo momento, dando seguimiento 
+                        a la respuesta de su planteamiento.
+                        La transparencia del proceso garantiza la confianza y calidad con que se presta el servicio.
+                    </p>
+                    <p><a class="btn btn-primary" href="formulario?eid=%2BLboxAij1HJpONFcu%2F5S1VdVGLpi8IR1aWO0IKsDCW4%3D" role="button">Probar &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset("AtencionOnline/UiComercial/menu/encuesta.png") }}" width="120" class="" alt="encuesta">
+                    <h2>Encuestas</h2>
+                    <p>
+                        Permite diseñar y publicar encuestas personalizadas al cliente, los gobiernos y las instituciones públicas recurren
+                        a las encuestas para saber cuáles son las preferencias, las evaluaciones o los problemas de la sociedad y poder 
+                        así tomar decisiones o diseñar políticas públicas ajustadas a dichas prioridades.
+                    </p>
+                    <p><a class="btn btn-primary" href="atenciononline/encuestas?eid=%2BLboxAij1HJpONFcu%2F5S1VdVGLpi8IR1aWO0IKsDCW4%3D" role="button">Probar &raquo;</a></p>
+                </div>
+
+            </div>
+               
+            <div class="jumbotron2">
+                
+                <h1 class="text-center">openAO</h1>
+                <br>
+                <p>El proyecto es un derivado oficial del sistema AtenciónOnline perteneciente a los Joven Club, premiado el evento de Atención Ciudadana, Comunicación Institucional,
+                    Protección al Consumidor y Calidad del Ministerio de Comunicaciones CALIPROT 2015, por su utilidad y validada trayectoria de 3 años de explotación.
+                </p>
+                <p>
+                    La plataforma openAO sirve como base para el desarrollo de otras lógicas de interacción con el cliente ya que la metodología permite adaptar la
+                    solución casi de forma nativa para otros ambientes, agricultura, salud etc. Esta versión permite la colaboración abierta incluyendo nuevas funcionalidades
+                    propuestas por los colaboradores. A diferencia de AtenciónOnline la plataforma openAO está desarrollada con la recién lanzada serie 3 del framework 
+                    Raptor PHP perteneciente al <a href="http://raptorweb.cubava.cu">Proyecto Raptor</a>, incluyendo nuevas mejoras propuestas por la base tecnológica así como todas las funcionalidades de seguridad.
+                </p>
+                <p>
+                    Dentro del sistema pueden ser incluidos nuevas funcionalidades en forma de módulos gracias a la arquitectura basada en componentes planteada por su base
+                    tecnológica. Simplemente es posible crear un módulo con nuevas funciones e importarlo en el sistema de forma ágil.
+                </p>
+                <p class="text-center">
+                    <img src="{{ asset("AtencionOnline/introAO/img/tomas.png") }}">
+                </p>
+            </div>
+            
+            <div class="jumbotron2">
+                <h2 class="text-center">Colaboración</h2>
+                <br>
+                <p>
+                    El código fuente para esta versión inicial de openAO será liberado una vez lanzada la versión oficial del framework Raptor PHP 3 por razones específicas de soporte, 
+                    garantizando una versión estable de su tecnología base. Será lanzada además una guía de desarrollo y de instalación.
+                </p>
+                <p>
+                    Si te encuentras interesado en el proyecto puedes contactar al autor William Amed a través del correo <a href="mailto:watamayo@gmail.com">watamayo90@gmail.com</a>.
+                </p>
+            </div>
+            
+            <footer>
+                <p>&copy; Proyecto Raptor 2018</p>
+            </footer>
+        </div> <!-- /container -->
+
+
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script src="{{ asset('bootstrap/js/all.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('Raptor/js/raptor-core.js') }}"></script>
+        <script type="text/javascript">
+            $(document.body).ready(function () {
+
+            });
+
+
+        </script>
+    </body>
+</html>
+

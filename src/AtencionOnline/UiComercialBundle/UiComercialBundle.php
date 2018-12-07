@@ -28,6 +28,8 @@ class UiComercialBundle extends Bundle{
 
     public function registerRouteRule(RuleContainer $ruleContainer) {
 	 $ruleContainer->add('/ao/[\/\w]*', new Rule\Publish());
+         ConfigPortal::create();
+         return true;
         \Util\RUXBundle\RUXBundle::protectRoute('/ao/[\/\w]*');
         
         \Util\RUXBundle\RUXBundle::setName('ao');

@@ -70,7 +70,7 @@ class CorreoAspect implements \Go\Aop\Aspect {
         $request = $invocation->getArguments()[0];
         
         $that->hasCsrfProtection();
-        if($that->app->getSecurity()->isAuthenticated()){
+        if($that->getApp()->getSecurity()->isAuthenticated()){
             $incidencia=  $that->collector('LogicaBundle:Incidencias');
 
             $tipo=$that->getStoreManager()->getRepository('LogicaBundle:Tipo')->find($request->post('idTipo'));
@@ -144,7 +144,7 @@ class CorreoAspect implements \Go\Aop\Aspect {
         $request = $invocation->getArguments()[0];
         
         $that->hasCsrfProtection();
-        if ($that->app->getSecurity()->isAuthenticated()) {
+        if ($that->getApp()->getSecurity()->isAuthenticated()) {
             $incidencia = $that->collector($that->getStoreManager()->getRepository('LogicaBundle:Incidencias')->find($request->post('id')));
             $user = $that->getStoreManager()->getRepository('SyntarsusBundle:SecurityUser')->findOneBy(array('username' => $that->getSecurityUser()->get('username')));
 

@@ -29,14 +29,14 @@ class Main extends \Raptor\Core\App {
          * 
          * PROBABLY YOU NEED TO REMOVE THIS IN PRODUCTION MODE
          */
-        if($app->config('debug'))
+        /**if($app->config('debug'))
             $app->any('/',function() use ($app){
                 $app->redirect($app->request()->getScriptName().'/raptor');
             });
         else
             $app->any('/',function() use ($app){
                 $app->redirect($app->request()->getScriptName().'/ao/home');
-            });
+            });*/
     }
 
 }
