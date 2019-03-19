@@ -88,7 +88,7 @@ class CamposController extends Controller{
             if(strlen($name)>15)
                 $name=mb_substr($name, 0, 15,'UTF-8').'...';
                // $name=  substr ($name, 0, 15).'...';
-            $result[]=array('name'=>$name,'cant'=>count($this->getStoreManager()->getRepository('EncuestasBundle:AtenciononlineRespuestas')->findBy(array('idCampo'=>$camp->getId()))));
+            $result[]=array('fullname'=>$camp->getRespuesta(),'name'=>$name,'cant'=>count($this->getStoreManager()->getRepository('EncuestasBundle:AtenciononlineRespuestas')->findBy(array('idCampo'=>$camp->getId()))));
         }
         $json=$this->JSON($result);
         $this->app->contentType('application/json; charset=utf-8');
