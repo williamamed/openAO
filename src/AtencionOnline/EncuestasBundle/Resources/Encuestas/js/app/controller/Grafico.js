@@ -90,7 +90,7 @@ Ext.define('Encuestas.controller.Grafico', {
             store: 'Pie',
             axes: [{
                 type: 'Numeric',
-                position: 'bottom',
+                position: 'left',
                 fields: ['cant'],
                 label: {
                    renderer: Ext.util.Format.numberRenderer('0,0')
@@ -101,15 +101,29 @@ Ext.define('Encuestas.controller.Grafico', {
                 minimum: 0
             }, {
                 type: 'Category',
-                position: 'left',
+                position: 'bottom',
                 fields: ['name'],
+                label: {
+                    rotate: {
+                        degrees: 300
+                    }
+                },
+                
                 title: 'Respuestas'
             }],
             series: [{
-                type: 'bar',
-                axis: 'bottom',
+                type: 'column',
+                axis: 'left',
+                tips: {
+                    trackMouse: true,
+                    width: 140,
+                    renderer: function(storeItem, item) {
+                        this.setTitle(storeItem.get('fullname'));
+                        
+                    }
+                },
                 label: {
-                    display: 'insideEnd',
+                    display: 'outside',
                     field: 'cant',
                     renderer: function(val){
                          var total = 0;
