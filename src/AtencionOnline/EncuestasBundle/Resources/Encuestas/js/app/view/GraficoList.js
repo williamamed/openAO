@@ -1,9 +1,10 @@
 Ext.define('Encuestas.view.GraficoList', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.graficolist',
-    width:'60%',
+    width:'40%',
     store: 'Pregunta',
     title: "Preguntas",
+    collapsible:true,
     iconCls:'',
    
     initComponent: function() {
@@ -45,4 +46,3 @@ Ext.define('Encuestas.view.GraficoList', {
         this.callParent();
     }
 });
-
