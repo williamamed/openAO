@@ -1,6 +1,6 @@
 Ext.define('Encuestas.model.PieModel', {
     extend: 'Ext.data.Model',
-    fields: ['name','cant'],
+    fields: ['name','cant','fullname'],
     
     proxy: {
         type: 'ajax',
